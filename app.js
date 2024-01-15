@@ -22,12 +22,12 @@ socket.on("LiveData", function (data) {
   console.log(data);
 });
 
-socket.on("disconnect reason", function (msg) {
+socket.on("disconnectreason", function (msg) {
   console.log(msg);
   process.exit(1);
 });
 
-socket.on("welcome message", function (msg) {
+socket.on("welcomemsg", function (msg) {
   console.log(msg);
 });
 
@@ -40,6 +40,10 @@ io.on("connection", function (socket) {
   socket.on("disconnect", function (data) {
     if (!socket.nickname) return;
   });
+});
+
+app.get("/", (req, res) => {
+  return res.send("Hello World!");
 });
 
 http.listen(port, function () {
